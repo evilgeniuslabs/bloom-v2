@@ -139,6 +139,7 @@ typedef struct {
 } PatternAndName;
 typedef PatternAndName PatternAndNameList[];
 
+#include "Map.h"
 #include "Twinkles.h"
 #include "TwinkleFOX.h"
 
@@ -147,6 +148,14 @@ typedef PatternAndName PatternAndNameList[];
 PatternAndNameList patterns = {
   { pride,                  "Pride" },
   { colorWaves,             "Color Waves" },
+
+  { fallingRainbow,         "Falling Rainbow" },
+  { risingRainbow,          "Rising Rainbow" },
+  { rotatingRainbow,        "Rotating Rainbow" },
+
+  { fallingPalette,         "Falling Palette" },
+  { risingPalette,          "Rising Palette" },
+  { rotatingPalette,          "Rotating Palette" },
 
   // twinkle patterns
   { rainbowTwinkles,        "Rainbow Twinkles" },

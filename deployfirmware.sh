@@ -1,5 +1,5 @@
 outputDir=build
-binFilename=tree-v2.ino.bin
+binFilename=bloom-v2.ino.bin
 ip=${1:-"192.168.0.127"}
 url="http://$ip/update"
 
