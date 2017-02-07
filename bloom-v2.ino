@@ -149,6 +149,9 @@ PatternAndNameList patterns = {
   { pride,                  "Pride" },
   { colorWaves,             "Color Waves" },
 
+  { paletteStars,           "Palette Stars" },
+  { paletteTris,            "Palette Tris" },
+
   { fallingRainbow,         "Falling Rainbow" },
   { risingRainbow,          "Rising Rainbow" },
   { rotatingRainbow,        "Rotating Rainbow" },
@@ -188,6 +191,8 @@ PatternAndNameList patterns = {
   { juggle,                 "Juggle" },
   { fire,                   "Fire" },
   { water,                  "Water" },
+
+  { strandTest,             "Strand Test" },
 
   { showSolidColor,         "Solid Color" }
 };
@@ -831,8 +836,10 @@ void adjustPattern(bool up)
   if (currentPatternIndex >= patternCount)
     currentPatternIndex = 0;
 
-  EEPROM.write(1, currentPatternIndex);
-  EEPROM.commit();
+  if (autoplay == 0) {
+    EEPROM.write(1, currentPatternIndex);
+    EEPROM.commit();
+  }
 
   broadcastInt("pattern", currentPatternIndex);
 }
@@ -844,8 +851,10 @@ void setPattern(uint8_t value)
 
   currentPatternIndex = value;
 
-  EEPROM.write(1, currentPatternIndex);
-  EEPROM.commit();
+  if (autoplay == 0) {
+    EEPROM.write(1, currentPatternIndex);
+    EEPROM.commit();
+  }
 
   broadcastInt("pattern", currentPatternIndex);
 }
