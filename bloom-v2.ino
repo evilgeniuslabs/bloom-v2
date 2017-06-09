@@ -25,22 +25,22 @@ extern "C" {
 }
 
 #include <ESP8266WiFi.h>
-#include <ESP8266mDNS.h>
+//#include <ESP8266mDNS.h>
 #include <ESP8266WebServer.h>
 #include <ESP8266HTTPUpdateServer.h>
 #include <WebSocketsServer.h>
 #include <FS.h>
 #include <EEPROM.h>
-#include <IRremoteESP8266.h>
-#include <TimeLib.h>
-#include <WiFiUdp.h>
+//#include <IRremoteESP8266.h>
+//#include <TimeLib.h>
+//#include <WiFiUdp.h>
 #include "GradientPalettes.h"
 
 #define ARRAY_SIZE(A) (sizeof(A) / sizeof((A)[0]))
 
 #include "Field.h"
 
-#define HOSTNAME "ESP8266-" ///< Hostname. The setup function adds the Chip ID at the end.
+#define HOSTNAME "Bloom-ESP8266-" ///< Hostname. The setup function adds the Chip ID at the end.
 
 //#define RECV_PIN D4
 //IRrecv irReceiver(RECV_PIN);
@@ -118,10 +118,10 @@ uint8_t gHue = 0; // rotating "base color" used by many of the patterns
 
 CRGB solidColor = CRGB::Blue;
 
-// A UDP instance to let us send and receive packets over UDP
-WiFiUDP udp;
+//// A UDP instance to let us send and receive packets over UDP
+//WiFiUDP udp;
 
-unsigned int udpLocalPort = 2390;      // local port to listen for UDP packets
+//unsigned int udpLocalPort = 2390;      // local port to listen for UDP packets
 
 // scale the brightness of all pixels down
 void dimAll(byte value)
@@ -255,10 +255,10 @@ void setup() {
   for (uint8_t i = 0; i < hostname.length(); i++)
     hostnameChar[i] = hostname.charAt(i);
 
-  MDNS.begin(hostnameChar);
-
-  // Add service to MDNS-SD
-  MDNS.addService("http", "tcp", 80);
+  //  MDNS.begin(hostnameChar);
+  //
+  //  // Add service to MDNS-SD
+  //  MDNS.addService("http", "tcp", 80);
 
   // Print hostname.
   Serial.println("Hostname: " + hostname);
@@ -496,7 +496,7 @@ void loop() {
   FastLED.show();
 
   // insert a delay to keep the framerate modest
-  FastLED.delay(1000 / FRAMES_PER_SECOND);
+  //  FastLED.delay(1000 / FRAMES_PER_SECOND);
 }
 
 void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t length) {
