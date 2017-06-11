@@ -16,7 +16,8 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#define FASTLED_ALLOW_INTERRUPTS 0
+//#define FASTLED_ALLOW_INTERRUPTS 0
+#define FASTLED_INTERRUPT_RETRY_COUNT 0
 #include <FastLED.h>
 FASTLED_USING_NAMESPACE
 
@@ -202,6 +203,8 @@ const uint8_t patternCount = ARRAY_SIZE(patterns);
 #include "Fields.h"
 
 void setup() {
+  WiFi.setSleepMode(WIFI_NONE_SLEEP);
+  
   Serial.begin(115200);
   delay(100);
   Serial.setDebugOutput(true);
